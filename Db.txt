@@ -1,0 +1,30 @@
+CREATE DATABASE user_authentication;
+.
+.
+.
+.
+.
+.
+
+CREATE USER 'app_user'@'localhost'
+IDENTIFIED BY 'StrongPassword@123';
+GRANT ALL PRIVILEGES ON user_authentication.*
+TO 'app_user'@'localhost';
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR 'app_user'@'localhost';
+
+.
+.
+.
+.
+.
+.
+CREATE TABLE users (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP
+);
